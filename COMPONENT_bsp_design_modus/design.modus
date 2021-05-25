@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Design version="12" xmlns="http://cypress.com/xsd/cydesignfile_v3">
-    <ToolInfo version="2.2.0.2801"/>
+    <ToolInfo version="2.3.0.4276"/>
     <Devices>
         <Device mpn="CYBT-273063-02">
             <BlockConfig>
-				<Block location="bluetooth[0]">
+                <Block location="bluetooth[0]">
                     <Alias value="BT"/>
                     <Personality template="20x19_bluetooth" version="1.0"/>
                 </Block>
@@ -60,11 +60,11 @@
                         <Param id="InterruptTrigger" value="GPIO_EN_INT_RISING_EDGE"/>
                     </Personality>
                 </Block>
-                <Block location="ioss[0].pin[3]">
-                    <Alias value="PUART_TX"/>
+                <Block location="ioss[0].pin[37]">
+                    <Alias value="PUART_RX"/>
                     <Personality template="20x19_pin" version="1.0">
                         <Param id="Type" value="PERIPHERAL"/>
-                        <Param id="Index" value="0"/>
+                        <Param id="Index" value="1"/>
                         <Param id="DefaultState" value="GPIO_PIN_OUTPUT_LOW"/>
                         <Param id="Control" value="GPIO_INPUT_ENABLE"/>
                         <Param id="PullMode" value="GPIO_PULL_UP_DOWN_NONE"/>
@@ -72,11 +72,11 @@
                         <Param id="InterruptTrigger" value="GPIO_EN_INT_RISING_EDGE"/>
                     </Personality>
                 </Block>
-                <Block location="ioss[0].pin[37]">
-                    <Alias value="PUART_RX"/>
+                <Block location="ioss[0].pin[3]">
+                    <Alias value="PUART_TX"/>
                     <Personality template="20x19_pin" version="1.0">
                         <Param id="Type" value="PERIPHERAL"/>
-                        <Param id="Index" value="1"/>
+                        <Param id="Index" value="0"/>
                         <Param id="DefaultState" value="GPIO_PIN_OUTPUT_LOW"/>
                         <Param id="Control" value="GPIO_INPUT_ENABLE"/>
                         <Param id="PullMode" value="GPIO_PULL_UP_DOWN_NONE"/>
@@ -96,23 +96,23 @@
                         <Param id="InterruptTrigger" value="GPIO_EN_INT_RISING_EDGE"/>
                     </Personality>
                 </Block>
-				<Block location="uart[1]">
+                <Block location="uart[1]">
                     <Alias value="PUART"/>
                     <Personality template="20x19_uart" version="1.0"/>
                 </Block>
             </BlockConfig>
             <Netlist>
-				<Net>
+                <Net>
+                    <Port name="ioss[0].pin[3].aux[0]"/>
+                    <Port name="uart[1].txd[0]"/>
+                </Net>
+                <Net>
                     <Port name="ioss[0].pin[10].aux[0]"/>
                     <Port name="uart[1].cts[0]"/>
                 </Net>
                 <Net>
                     <Port name="ioss[0].pin[11].aux[0]"/>
                     <Port name="uart[1].rts[0]"/>
-                </Net>
-                <Net>
-                    <Port name="ioss[0].pin[3].aux[0]"/>
-                    <Port name="uart[1].txd[0]"/>
                 </Net>
                 <Net>
                     <Port name="ioss[0].pin[37].aux[0]"/>
